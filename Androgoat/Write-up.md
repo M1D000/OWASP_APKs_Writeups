@@ -33,7 +33,7 @@ Java.perform(function()  {
 });
 ```
 Now, when use check root function, we'll get *device is not rooted*
-![](notRooted.png)
+![notRooted.png](./images/notRooted.png)
 
 ---
 ## 2- Check emulator
@@ -67,7 +67,7 @@ Java.perform(function(){
 
 });
 ```
-![](noEmulator.png)
+![noEmulator.png](./images/noEmulator.png)
 
 
 
@@ -95,7 +95,7 @@ iget-boolean v2, p0, Lowasp/sat/agoat/BinaryPatchingActivity;->isAdmin:Z
 ```
 in the code above if this.Admin is false it jumps to cond_0
 all we need here to reverse logic in if condition to make it *if-neq v2, :cond_0* instead of *if-eqz v2, :cond_0*
-![](binaryBatching.png)
+![binaryBatching.png](./images/binaryBatching.png)
 
 
 
@@ -123,7 +123,7 @@ The function above takes input from user and write it in html page directly with
 webSettings.setJavaScriptEnabled(true);
 ```
 The *setJavascriptEnabled* method can be used to enable the execution of JavaScript within WebViews. This leaves applications vulnerable to file-based XSS. 
-![](XSS.png)
+![XSS.png](./images/XSS.png)
 
 
 
@@ -139,7 +139,7 @@ webViewSettings.setAllowFileAccess(true);
 ```
 
 In our app we have *setAllowFileAccess* which is we can access to sensetive local files through it with *file://* schema
-![](webView.png)
+![webView.png](./images/webView.png)
 
 
 ## 7- Certificate pinning
@@ -177,7 +177,7 @@ Steps:
 		2- Using this command `objection -n <packageName> start`
 	    3- Finally we use `android sslpinning disable`
 	    *Objection* uses frida to hook the methods which responsible for certificate pinning and modify its logic during run-time process and make the application considers that all certificates are allowable
-	    ![](certificatePinning.png)
+	    ![certificatePinning.png](./images/certificatePinning.png)
 
 
 ## 8- Activity exported
@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
-![](ActivityExported.png)
+![ActivityExported.png](./images/ActivityExported.png)
 
 
 ## 9- Insecure data storage
@@ -248,7 +248,7 @@ public static final void onCreate$lambda$1(InsecureStorageSharedPrefs this$0, Ed
 ```
 this function above create shared preference called *users.xml* and store the username and password that user enter and write them in the shared preference as a key and value
 The problem here that store the password as a plaintext
-![](shared1.png)
+![shared1.png](./images/shared1.png)
 ### 2- Shared Preferences -Part 2
 There is a game and to win with it we must get the score to 10000 
 in the activity called *InsecureStorageSharedPrefs1Activity* there is a shared preference that stores the score and value in file called *score.xml* so, we can edit score in this file to win this game
@@ -327,7 +327,7 @@ String logMessage = "Username: " + ((Object) text) + " and Password: " + ((Objec
         System.out.println(logMessage);
 ```
 In the code above makes the information displayed twice in logcat , the first one because *Log.i* and the second because *System.out.println*
-![](logcat.png)
+![](./images/logcat.png)
 
 ### 2- Clipboard copy and paste
 in *ClipboardActivity* there is a vulnerable code that generate OTP and copy it automatically
